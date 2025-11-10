@@ -64,6 +64,17 @@ def precompile_patterns():
     print(re_.split(target)) #print(re.split(regexp, target))
     print(re_.sub('cars', target)) #print(re.sub(regexp, 'cars', target))
 
+def anonymity():
+    """test input = @some_twitter_user I love dogs, @another_twitter_user! """
+    """expected output = <AUTHOR> I love dogs, <HANDLE>! """
+
+    target = input("Type: ")
+    switch = re.compile('@\\w+')
+    google = switch.sub("<AUTHOR>", target, count=1)
+    backgamon = switch.sub("<HANDLE>", google)
+
+    print(backgamon)
+
 def homework():
     # https://hyperskill.org/learn/step/14243
     # https://hyperskill.org/learn/step/14180
@@ -77,4 +88,5 @@ if __name__ == '__main__':
     #splits_of_strings()
     #substitute_strings()
     #precompile_patterns()
-    homework()
+    anonymity() #hyperskill assignment
+    homework() #hyperskill "Data Extraction" problem
