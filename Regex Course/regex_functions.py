@@ -1,5 +1,4 @@
 import re
-from tkinter.messagebox import IGNORE
 
 
 def beginning_of_string():
@@ -44,12 +43,40 @@ def splits_of_strings():
     target = "Roads? Where we're going we don't need roads."
     print(re.split('\\W+', target))
 
-def replacing_strings():
-    pass
+def substitute_strings():
+    target = 'blue jeans, white shirt, yellow socks, white flower, blue black, yellow fish'
+    pattern = '(blue|white|yellow|fish)'
+    replacement = 'black'
+
+    print(re.sub(pattern, replacement, target))
+    print(re.sub(pattern, replacement, target, count=4))
+
+def precompile_patterns():
+    """you can skip the step of inputting the regex
+    string in the re.match() and other functions"""
+
+    target = "roads? where we're going we don't need roads."
+    regexp = 'roads'
+    re_ = re.compile(regexp)
+
+    print(re_.match(target)) #print(re.match(regexp, target))
+    print(re_.findall(target)) #print(re.findall(regexp, target))
+    print(re_.split(target)) #print(re.split(regexp, target))
+    print(re_.sub('cars', target)) #print(re.sub(regexp, 'cars', target))
+
+def homework():
+    # https://hyperskill.org/learn/step/14243
+    # https://hyperskill.org/learn/step/14180
+
+
+
+
 
 if __name__ == '__main__':
     #beginning_of_string()
     #any_part_of_string() #only returns first occurrence
     #all_matches_of_string()
     #splits_of_strings()
-    replacing_strings()
+    #substitute_strings()
+    #precompile_patterns()
+    homework()
