@@ -67,9 +67,7 @@ def precompile_patterns():
 def homework():
     # https://hyperskill.org/learn/step/14243
     # https://hyperskill.org/learn/step/14180
-
-
-
+    pass
 
 
 if __name__ == '__main__':
