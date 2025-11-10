@@ -76,9 +76,23 @@ def anonymity():
     print(backgamon)
 
 def homework():
-    # https://hyperskill.org/learn/step/14243
-    # https://hyperskill.org/learn/step/14180
-    pass
+    """ sample input: Something\n<START>\nsomething\n<END>\nsomething
+        grab everything between <START> and <END> using regex """
+
+    target = input("Type: ")
+    #TEST STOP 1, PRINTS EXACTLY AS ENTERED (including newline)
+
+    noob = re.search("<START>", target)
+    target = target[noob.end():]
+    #TEST STOP 2, successfully removed everything before and including <START> from string
+
+    noob = re.search("<END>", target)
+    target = target[:noob.start()]
+
+    print(target)
+    #EXCELSIOR
+
+
 
 
 if __name__ == '__main__':
@@ -88,5 +102,5 @@ if __name__ == '__main__':
     #splits_of_strings()
     #substitute_strings()
     #precompile_patterns()
-    anonymity() #hyperskill assignment
+    #anonymity() #hyperskill assignment
     homework() #hyperskill "Data Extraction" problem
