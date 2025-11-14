@@ -20,6 +20,55 @@ def numbered_list():
     hit = lambda x: print(re.match(arrow, x))
     hit(target)
 
+def phone_number():
+    target = input("Number: ")
+    # your code here
+    arrow = r"\+(\d{1})[-\s]{,1}(\d{3})[-\s]{,1}(\d{3}[-\s]{,1}\d{2}[-\s]{,1}\d{2})$"
+    hit = re.match(arrow, target)
+
+    if hit is not None:
+        print(f"Full number: {hit.group()}")
+        print(f"Country code: {hit.group(1)}")
+        print(f"Area code: {hit.group(2)}")
+        print(f"Number: {hit.group(3)}")
+    else:
+        print("No match")
+
+def posthumously():
+    """ AM I supposed to be using a post-condition here???
+        I still got the right result
+        https://hyperskill.org/learn/step/14258 """
+
+    target = input()
+    # your code here
+    arrow = r"([\w\s]+ \$(\d+),?)+$"
+
+    hit = re.compile(arrow)
+    if hit.match(target) is not None:
+        chances = target.split(",")
+        # print(chances) test successful
+
+        sum = 0
+        for chance in chances:
+            sum += int(hit.match(chance).group(2))
+        print(f"This week you have spent: {sum} dollars")
+
+def webdev():
+    """print list of items contained within
+        html tags <li> (example) </li>"""
+
+    target = "<li>Sister</li> <li>Father</li> <li>Mother-in-law</li>"
+    arrow = r"(?<=<li>)[-\w\s]+(?=</li>)"
+
+    hit = re.compile(arrow)
+    captured = hit.findall(target)
+
+    for i in captured:
+        print(i)
+
 if __name__ == '__main__':
     #your_name_please() #quantifiers module
-    numbered_list() #groups and alternations module
+    #numbered_list() #groups and alternations module
+    #phone_number() #groups and alternations module
+    #posthumously() #Jesus #Preconditions and Post Conditions
+    webdev() #Preconditions and Post Conditions
